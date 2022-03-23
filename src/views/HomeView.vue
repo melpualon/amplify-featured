@@ -1,18 +1,22 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Authenticator>
+      <template v-slot="{user, signOut} ">
+        <h3> Hi {{ user.attributes.email }}</h3>
+        <button @click="signOut">Sign Out</button>
+      </template>
+    </Authenticator>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+// import HelloWorld from '@/components/HelloWorld.vue'
+// import { defineComponent } from 'vue'
+import { Authenticator } from '@aws-amplify/ui-vue'
 
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld
-  }
+  components: { Authenticator }
 }
 </script>
